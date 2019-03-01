@@ -4,25 +4,27 @@
  *
  * @format
  * @flow
+ * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-export default class App extends Component{
-  componentDidMount(){
-    SplashScreen.hide();
-  }
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#1C1328"
-        barStyle="light-content"
-        />
-        <Text style={styles.welcome}>Druk Med</Text>
-        <Text style={styles.instructions}>All medicine in one App.</Text>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
       </View>
     );
   }
@@ -33,17 +35,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1C1328',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color:'white',
   },
   instructions: {
     textAlign: 'center',
-    color: 'white',
+    color: '#333333',
     marginBottom: 5,
   },
 });
